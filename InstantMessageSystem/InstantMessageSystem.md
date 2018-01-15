@@ -181,13 +181,13 @@ fileOut.close();
     
 ## 比较丑的界面
 
-登录
-![login](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/login.png)
+**登录/注册**
 
-注册
+![login](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/login.png)
 ![register](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/register.png)
 
-服务器
+**服务器**
+
 ![server](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/server.png)
 
 作者：微博 [@itagn][1] - Github [@itagn][2]
