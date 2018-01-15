@@ -17,11 +17,17 @@
     9.通过继承Thread实现多线程编程
 
 ![exe](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/exe.png)
+
 ## socket套接字原理以及传输
-    socket是一对套接字，客户端和服务器的一对配对socket，即socket和serverSocket。建立serverSocket(Int serverPort)监听服务器的端口号，然后创建客户端的套接字进行绑定服务器socket(String serverIP, Int serverPort)。
+
+    socket是一对套接字，客户端和服务器的一对配对socket，即socket和serverSocket。
+    建立serverSocket(Int serverPort)监听服务器的端口号。
+    建立客户端的套接字进行绑定服务器socket(String serverIP, Int serverPort)。
+    
 一、通过客户端向服务器发送字符串
 
 ![chat](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/chat.png)
+
 客户端发送消息，可以接受服务器返回的消息
 ```java
 //  客户端代码
@@ -55,6 +61,7 @@ while(true){
     3.客户端开始传输数据流，客户端开始接收数据流，接收完数据流后断开socket通信，传输完毕
 
 ![file](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/file.png)
+
 客户端发送文件数据流
 ```java
 //  sendPath为要发送的文件路径
@@ -118,6 +125,7 @@ fileOut.close();
 
 ## 添加好友和删除好友
 ![friends](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/friends.png)
+
 一、添加好友
 
     搜索好友的网名后，点击添加，不存在或者错误，会弹窗提示。存在且不是好友，会发送添加好友的权限请求给接收方，接收方同意添加好友后，从服务器获取资源，刷新双方的好友界面，否则不进行操作。
@@ -163,11 +171,14 @@ fileOut.close();
     
 ## 比较丑的界面
 
+登录
 ![login](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/login.png)
+
+注册
 ![register](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/register.png)
+
+服务器
 ![server](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/server.png)
-
-
 
 作者：微博 [@itagn][1] - Github [@itagn][2]
 
