@@ -165,7 +165,7 @@ async.series([
 });
 ```
 
-- 异步的并行执行，async.parallel()，并发自行异步函数
+- 异步的并行执行，async.parallel()，并发执行异步函数
 
 ```javascript
 //  《深入浅出node》 p96
