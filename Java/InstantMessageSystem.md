@@ -1,9 +1,6 @@
-﻿```javascript
-/*
-* 作者：蔡东-uestc-2017届-cs
-* 转载请注明出处并保留原文链接
-*/
-```
+﻿作者：蔡东-uestc-2017届
+转载请注明出处并保留原文链接
+
 ## 简介项目
 
     这是我的毕业设计，基于DES加密的即时通信聊天系统。
@@ -19,7 +16,7 @@
     8.用户上线离线过程，实现客户端和服务器的实时刷新
     9.通过继承Thread实现多线程编程
 
-![exe](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/exe.png)
+![exe](https://github.com/itagn/blog/raw/master/Java/img/exe.png)
 
 ## socket套接字原理以及传输
 
@@ -29,7 +26,7 @@
     
 一、通过客户端向服务器发送字符串
 
-![chat](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/chat.png)
+![chat](https://github.com/itagn/blog/raw/master/Java/img/chat.png)
 
 客户端发送消息，可以接受服务器返回的消息
 ```java
@@ -63,7 +60,7 @@ while(true){
     2.服务器开始监听数据流，并返回信息告诉客户端准备好了
     3.客户端开始传输数据流，客户端开始接收数据流，接收完数据流后断开socket通信，传输完毕
 
-![file](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/file.png)
+![file](https://github.com/itagn/blog/raw/master/Java/img/file.png)
 
 客户端发送文件数据流
 ```java
@@ -134,7 +131,7 @@ fileOut.close();
     如果存在，执行上面的操作。
 
 ## 添加好友和删除好友
-![friends](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/friends.png)
+![friends](https://github.com/itagn/blog/raw/master/Java/img/friends.png)
 
 一、添加好友
 
@@ -186,12 +183,12 @@ fileOut.close();
 
 **登录/注册**
 
-![login](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/login.png)
-![register](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/register.png)
+![login](https://github.com/itagn/blog/raw/master/Java/img/login.png)
+![register](https://github.com/itagn/blog/raw/master/Java/img/register.png)
 
 **服务器**
 
-![server](https://github.com/itagn/blog/raw/master/InstantMessageSystem/img/server.png)
+![server](https://github.com/itagn/blog/raw/master/Java/img/server.png)
 
 作者：微博 [@itagn][1] - Github [@itagn][2]
 
