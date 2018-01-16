@@ -1,6 +1,9 @@
-﻿作者：蔡东-uestc-2017届
-转载请注明出处并保留原文链接
-
+﻿```javascript
+/*
+* 作者：蔡东-uestc-2017届-cs
+* 转载请注明出处并保留原文链接
+*/
+```
 ## 如何发布一个npm包
 **注册**：
 首先在 **[npm](https://www.npmjs.com/)** 社区注册你的账号
@@ -35,9 +38,9 @@ $ npm init
 
 1. index.js就是package.json里面提到的入口文件（可以重命名）
 2. package.json用来配置你的包的信息
-3. lib/core.js 用来存到你的核心代码（可以重命名）
-4. 生成的LICENSE就是你的许可证（不知道怎么写可以借鉴别人）
-5. 用来完整介绍你的包的markdown文件
+3. 生成的LICENSE就是你的许可证（不知道怎么写可以借鉴别人）
+4. README.md用来完整介绍你的包的markdown文件
+5. lib/core.js 用来存到你的核心代码（可以重命名）
 6. test存放你的测试代码
 ```javascript
 //  index.js文件里面可以输入一下部分
