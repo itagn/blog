@@ -15,3 +15,4 @@
 - [发布一个npm包](https://github.com/itagn/blog/blob/master/NodeJS/NpmPublish.md)
 - [Node异步的解决方案](https://github.com/itagn/blog/blob/master/NodeJS/NodeAsync.md)
 - [JavaScript的设计模式](https://github.com/itagn/blog/blob/master/JavaScript/JavaScriptDesignPattern.md)
+- [原生Node网络编程](https://github.com/itagn/blog/blob/master/NodeJS/NodeWeb.md)
