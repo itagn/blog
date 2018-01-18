@@ -16,7 +16,7 @@
     物理层  物理硬件设备
     
     本文主要讲解 tcp udp http https 的通信
-    来源于《深入浅出node》P151
+    来源于《深入浅出Node.js》P151
     
 ## TCP
 

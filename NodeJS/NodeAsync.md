@@ -22,11 +22,11 @@
     promise是异步回调的语法糖
     *和yield | async和await 是为了解决回调地狱。
     
-    最近看了《深入浅出node》，我发现还忽略了koa2出现的另外一种异步解决方案。
+    最近看了《深入浅出Node.js》，我发现还忽略了koa2出现的另外一种异步解决方案。
     流程控制库，封装好了的各种中间件，中间件的写法参数中也带了next参数。
     为了获取koa2项目启动的时间，我们就是通过koa2的洋葱模型和自定义插入next()，来实现计时。
     
-    通过《深入浅出node》，异步编程的解决方案可以分为三种
+    通过《深入浅出Node.js》，异步编程的解决方案可以分为三种
     1.事件发布/订阅模式
     2.Promise/Deferred模式
     3.流程控制库
@@ -60,7 +60,7 @@ Promise/Deferred模式包含两个部分，顾名思义，就是Promise和Deferr
     Promise状态只能由异步操作的结果决定，其他操作无法改变状态。
     状态一旦改变，不可逆转，只能发展的是 pending -> fulfilled | rejected
     
-《深入浅出node》p84通过继承node的events模块，通过事件发布/订阅模式的实现简单的Promise（我有修改）
+《深入浅出Node.js》p84通过继承node的events模块，通过事件发布/订阅模式的实现简单的Promise（我有修改）
 ```javascript
 //  通过继承node的events模块来获取事件订阅方法，util封装了继承的方法
 var Promise = function(){
@@ -94,7 +94,7 @@ Deferred.prototype.reject = function(err){
     this.state = 'failed';
     this.promise.emit('error', err);
 }
-//  《深入浅出node》 p87（我有修改）
+//  《深入浅出Node.js》 p87（我有修改）
 Deferred.prototype.all = function(promises){
     var count = promises.length;  //  获取promises数组的个数
     var that = this;  //  保存this的副本，下面如果调用this，作用域不在Deferred了
@@ -152,7 +152,7 @@ async function(ctx, next){
 - 异步的串行执行，async.series()，顺序执行异步函数
 
 ```javascript
-//  《深入浅出node》 p95
+//  《深入浅出Node.js》 p95
 async.series([
     function(callback){
         fs.readFile('file1.txt', 'utf-8', callback);
@@ -168,7 +168,7 @@ async.series([
 - 异步的并行执行，async.parallel()，并发执行异步函数
 
 ```javascript
-//  《深入浅出node》 p96
+//  《深入浅出Node.js》 p96
 async.parallel([
     function(callback){
         fs.readFile('file1.txt', 'utf-8', callback);
