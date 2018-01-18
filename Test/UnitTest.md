@@ -31,7 +31,7 @@ $ npm i -g mocha
 ```cmd
 $ npm i chai
 ```
-如何写测试文件呢，假设我有app.js文件，要检车app.js是否执行符合预期
+如何写测试文件呢，假设测试app.js文件，要测试app.js输出结果是否符合预期
 ```javascript
 //  app.js
 function maxNum(a, b){
@@ -62,8 +62,8 @@ describe('测试数值', function(){
 ```
 可以看到效果如下
     
-    第一个测试用例通过了passing，用时8ms
-    第二个测试用例通过了passing，用时8ms
+    第一个测试用例通过了passing
+    第二个测试用例通过了passing
     第三个测试用例失败falling，显示预期值2和输出结果5不相等，并说明问题出现在test.js的第16行
 
 ![mocha-max](https://github.com/itagn/blog/raw/master/Test/img/mocha-max.png)
