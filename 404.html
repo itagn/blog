@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>itagn的小屋</title>
+    <script>
+      var loc = 'http://itagn.xyz';
+      var regex = /http:\/\/itagn\.xyz\/docs\/([^#]+)#(.+)/;
+      var result = regex.exec(window.location);
+      if (result) {
+        window.location = loc + '/#docs/' + result[1] + '#' + result[2];
+      } else {
+        window.location = loc;
+      }
+    </script>
+  </head>
+  <body>
+    <p>redirecting...</p>
+  </body>
+</html>
