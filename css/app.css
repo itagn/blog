@@ -353,13 +353,10 @@ input.searchButton {
 @media (min-width: 40rem) {
 	#loading, #error {
 	    display: none;
-		position: fixed;
-
+        position: fixed;
 		height: 17px;
 		top: 45%;
-
 		margin-left: 560px;
-
 		font-size: 14px;
 	}
 }
@@ -400,7 +397,10 @@ input.searchButton {
 
 @media (min-width: 40rem) {
 	#flip{
-		margin-left:545px;
+        position: fixed;
+        left: 0;
+        right: 0%;
+        margin: 0 auto;
 		width:150px;
 	}
 }
