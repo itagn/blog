@@ -17,8 +17,11 @@ Java swing写ui界面，java写服务器，mysql做数据库，tcp的socket通�
 socket是一对套接字，客户端和服务器的一对配对socket，即socket和serverSocket。  
 建立serverSocket(Int serverPort)监听服务器的端口号。  
 建立客户端的套接字进行绑定服务器socket(String serverIP, Int serverPort)。  
-一、通过客户端向服务器发送字符串  
+**一、通过客户端向服务器发送字符串**    
 客户端发送消息，可以接受服务器返回的消息
+
+![chat.png](img/chat.png)
+
 ```javascript
 //  客户端代码
 Socket s = new Socket(serverIp, serverPort);
@@ -42,13 +45,14 @@ while(true){
     output.writeUTF('hello client!);
 }
 ```
-
-二、通过客户端向服务器发送文件
+**二、通过客户端向服务器发送文件**  
 发送文件的思维就是tcp的三次握手，步骤如下：
 
 1. 告诉服务器，客户端要发送文件
 1. 服务器开始监听数据流，并返回信息告诉客户端准备好了
 1. 客户端开始传输数据流，客户端开始接收数据流，接收完数据流后断开socket通信，传输完毕
+
+![file.png](img/file.png)
 
 客户端发送文件数据流
 ```javascript
@@ -90,7 +94,7 @@ while (true) {
 }
 fileOut.close();
 ```
-三、多个客户端之间通信
+**三、多个客户端之间通信**  
 原理很简单，服务器做到的是转发的作用，服务器接收到client1的请求后，检查client2是否在线。  
 如果client2在线，从数据库获取client2的ip地址和端口号。  
 此时服务器做客户端，client2做服务器，向client2发送请求。
@@ -119,6 +123,9 @@ fileOut.close();
 1. 如果存在，执行上面的操作。
 
 ## 添加好友和删除好友  
+
+![friends.png](img/friends.png)
+
 一、添加好友
 
 1. 搜索好友的网名后，点击添加，不存在或者错误，会弹窗提示。  
@@ -164,6 +171,17 @@ fileOut.close();
 四、DES加密的密钥固定
 
 1. 所有聊天信息传输过程中，都是会用同一套密钥，安全性降低
+
+## 比较丑的界面
+
+**登录/注册**  
+
+![login.png](img/login.png)
+![register.png](img/register.png)
+
+**服务器**  
+
+![server.png](img/server.png)
 
 作者：微博 [@itagn][1] - Github [@itagn][2]
 

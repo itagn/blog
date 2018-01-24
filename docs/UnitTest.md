@@ -61,6 +61,8 @@ describe('测试数值', function(){
     第二个测试用例通过了passing
     第三个测试用例失败falling，显示预期值2和输出结果5不相等，并说明问题出现在test.js的第16行
 
+![mocha-max.png](img/mocha-max.png)
+
 mocha的规则知道了，那么简单看看mocha的其他api是怎么使用的吧，其他的api不举例了，详情去[【Mocha官网】]()看api
 ```javascript
 //  判断是否可以转化为true和false
@@ -97,6 +99,10 @@ describe('异步超时', function(){
     });
 });
 ```  
+测试结果如下
+
+![mocha-timeout.png](img/mocha-timeout.png)
+
 ## Jasmine
 ```javascript
 $ npm i -g jasmine
@@ -128,6 +134,8 @@ describe('测试数值', function(){
     第一个测试用例通过了显示.
     第二个测试用例通过了显示.
     第三个测试用例失败显示F，显示预期值2和输出结果5不相等，并说明问题出现在test.js的第15行
+
+![jasmine-max.png](img/jasmine-max.png)
 
 简单看看jasmine的其他api是怎么使用的吧，其他的api不举例了，详情去[【Jasmine官网】](https://jasmine.github.io/api/2.9/global)看api
 ```javascript
@@ -161,6 +169,10 @@ describe('异步超时', function(){
     });
 });
 ```  
+测试结果如下
+
+![jasmine-timeout.png](img/jasmine-timeout.png)
+
 ## 总结
 还有很多api没有讲，本文主要是简单的介绍两个测试框架在普通测试和异步测试
 
