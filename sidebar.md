@@ -1,6 +1,6 @@
 # [itagn的小屋]()
 
-作者：[itagn](https://github.com/itagn)
+作者：[itagn](https://github.com/itagn)  
 
 ## 目录
 1. [itagn的小屋](#README)
@@ -15,3 +15,7 @@
 ## 其他
 - [github地址](http://github.com/itagn/blog/)
 - [反馈意见](https://github.com/itagn/blog/issues)
+
+## 联系我
+
+Email：[1390916847@qq.com]()
