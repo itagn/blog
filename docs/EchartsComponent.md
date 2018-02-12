@@ -1,13 +1,13 @@
-﻿# Vue + Typescript + Echarts 制作可视化图表组件
+﻿# Vue+Typescript+Echarts制作可视化图表组件
 写在前面的话  
 为什么用vue+typescript呢？  
 vue是项目成员们平时的技术栈，typescript是因为项目TL推荐typescript。  
 那么就去好好看看vue + typescript怎么玩了。  
-一开始我是拒绝的，typescript配合vue一开始遇到很多坑，不过还是继续下去了
+一开始笔者是拒绝的，typescript配合vue一开始遇到很多坑，不过还是继续下去了
 
 ## vue配置typescript
 vue推出了一个使用typescript的js库 [vue-class-component](https://github.com/vuejs/vue-class-component)  
-我又发现一个基于这个仓库加强版的js库 [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator)  
+笔者又发现一个基于这个仓库加强版的js库 [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator)  
 所以先安装这两个npm包吧
 ```javascript
 $ npm install vue-class-component
@@ -71,7 +71,7 @@ export default class pie extends Vue {
         let options = {
             //  echarts官网有官网实例
         }
-        chart.setOption(dom);
+        chart.setOption(options);
     }
 }
 </script>
@@ -90,7 +90,7 @@ mounted(){
 }
 ```
 然后在浏览器输出了一个vue对象 VueComponent  
-最终在VueComponent.____proto____.____proto____ 里面找到了$echarts方法  
+最终在VueComponent.__proto__.__proto__ 里面找到了$echarts方法  
 既然this里面可以通过原型找到echarts的方法，为啥不能用呢？  
 这个问题笔者也不知道，但是笔者用了另外的办法解决了这个问题
 ```javascript
@@ -101,7 +101,7 @@ mounted(){
         let options = {
             //  echarts官网有官网实例
         }
-        chart.setOption(dom);
+        chart.setOption(options);
     }
 ```
 既然可以通过原型找到，但是this却不能直接使用  
@@ -151,7 +151,7 @@ mounted(){
     let options = {
         //  echarts官网有官网实例
     }
-    chart.setOption(dom);
+    chart.setOption(options);
 }
 uploadChart(chart){
     emit('upChart', chart);
