@@ -1,13 +1,13 @@
 ﻿# 如何发布一个npm包
-**注册**： 
-首先在 **[npm](https://www.npmjs.com/)** 社区注册你的账号  
-**本地**： 
-**linux**系统下 or **Windows**系统的git bash / cmder  
+**注册**：  
+首先在 **[【npm】](https://www.npmjs.com/)** 社区注册你的账号  
+**本地**：  
+**linux** 系统下 or **Windows** 系统的 git bash / cmder  
 ```javascript
 $ mkdir test && cd test
 $ npm init
 ```
-跟着对应的输入信息，最后会储存到**package.json**里面
+跟着对应的输入信息，最后会储存到 **package.json** 里面
 
 1. 包名称：（可回车）
 1. 第一个版本号：（可回车）或者自定义 x.x.x

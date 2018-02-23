@@ -10,6 +10,7 @@
 1. [Node异步的解决方案](#docs/NodeAsync)
 1. [JavaScript的设计模式](#docs/JavaScriptDesignPattern)
 1. [原生NodeJS网络编程](#docs/NodeWeb)
+1. [JavaScript模块的循环加载](#docs/JavaScriptLoopLoad)
 1. [在项目中通过解构赋值优化代码](#docs/ES6Destructuring)
 1. [用Mocha和Jasmine进行单元测试](#docs/UnitTest)
 

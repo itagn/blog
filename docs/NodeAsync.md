@@ -1,13 +1,13 @@
 ﻿# Node异步的解决方案
 
 ## 谈一谈nodejs异步的解决方案
-在我思考node异步的解决方案，首先想到的是回调，如何解决回调地狱呢？ 
+在笔者思考node异步的解决方案，首先想到的是回调，如何解决回调地狱呢？ 
 ES6里面提出了一种方案，*和yield加promise。 
 很有名的npm包 co，也就是通过*和yield实现的。 
 ES7又提出了新的语法糖，async和await加promise。 
-而我在做koa2项目的时候，都是将async和await加promise用到每一个异步中。 
+而笔者在做koa2项目的时候，都是将async和await加promise用到每一个异步中。 
 
-如果再让我想想解决异步的方案。 
+如果再让笔者想想解决异步的方案。 
 之前用原生node写爬虫的时候，为了解决异步函数在不同情况下不同的处理（那时候还不会es6和koa2）。 
 通常使用res.on('data')处理接收到数据时的操作，res.on('end')处理接收完数据时的操作。 
 算起来这也是一种异步的解决方案。 
@@ -16,7 +16,7 @@ ES7又提出了新的语法糖，async和await加promise。
     promise是异步回调的语法糖  
     *和yield | async和await 是为了解决回调地狱。 
 
-最近看了《深入浅出Node.js》，我发现还忽略了koa2出现的另外一种异步解决方案。 
+最近看了《深入浅出Node.js》，笔者发现还忽略了koa2出现的另外一种异步解决方案。 
 流程控制库，封装好了的各种中间件，中间件的写法参数中也带了next参数。 
 为了获取koa2项目启动的时间，我们就是通过koa2的洋葱模型和自定义插入next()，来实现计时。 
 
@@ -55,7 +55,7 @@ Promise/Deferred模式包含两个部分，顾名思义，就是Promise和Deferr
     Promise状态只能由异步操作的结果决定，其他操作无法改变状态。
     状态一旦改变，不可逆转，只能发展的是 pending -> fulfilled | rejected
     
-《深入浅出Node.js》p84通过继承node的events模块，通过事件发布/订阅模式的实现简单的Promise（我有修改）
+《深入浅出Node.js》p84通过继承node的events模块，通过事件发布/订阅模式的实现简单的Promise（笔者有修改）
 ```javascript
 //  通过继承node的events模块来获取事件订阅方法，util封装了继承的方法
 var Promise = function(){
@@ -89,7 +89,7 @@ Deferred.prototype.reject = function(err){
     this.state = 'failed';
     this.promise.emit('error', err);
 }
-//  《深入浅出Node.js》 p87（我有修改）
+//  《深入浅出Node.js》 p87（笔者有修改）
 Deferred.prototype.all = function(promises){
     var count = promises.length;  //  获取promises数组的个数
     var that = this;  //  保存this的副本，下面如果调用this，作用域不在Deferred了
