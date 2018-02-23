@@ -5,13 +5,13 @@
 ## 目录
 1. [itagn的小屋](#README)
 1. [基于DES加密的即时通信聊天系统](#docs/InstantMessageSystem)
-1. [Vue+Typescript+Echarts制作可视化图表组件](#docs/EchartsComponent)
-1. [如何发布一个npm包](#docs/NpmPublish)
 1. [Node异步的解决方案](#docs/NodeAsync)
 1. [JavaScript的设计模式](#docs/JavaScriptDesignPattern)
 1. [原生NodeJS网络编程](#docs/NodeWeb)
 1. [JavaScript模块的循环加载](#docs/JavaScriptLoopLoad)
+1. [如何发布一个npm包](#docs/NpmPublish)
 1. [在项目中通过解构赋值优化代码](#docs/ES6Destructuring)
+1. [Vue+Typescript+Echarts制作可视化图表组件](#docs/EchartsComponent)
 1. [用Mocha和Jasmine进行单元测试](#docs/UnitTest)
 
 ## 其他
