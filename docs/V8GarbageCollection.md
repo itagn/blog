@@ -135,12 +135,12 @@ rd.pipe(wt);
 闭包变量使用完后，如果不能被垃圾回收机制清理，我们可以手动清理。
 ```javascript
 let fn = function (){
-    let str = 'hello world';
+    let dom = document.querySelect('.main');
     return function (){
         //  这里出发了内存泄漏
-        console.log(str);
-        //  进行手动清理
-        str = undefined;
+        console.log(dom);
+        //  消除引用，手动解决垃圾回收机制会清理内存
+        dom = null;
     }
 }
 fn()();
