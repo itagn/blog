@@ -1,4 +1,4 @@
-﻿# Vue+Typescript+Echarts制作可视化图表组件
+﻿# Vue+TS+Echarts制作可视化组件
 写在前面的话  
 为什么用vue+typescript呢？  
 vue是项目成员们平时的技术栈，typescript是因为项目TL推荐typescript。  

@@ -1,4 +1,4 @@
-# Webpack4从0配置TypeScript+SCSS
+# Webpack4从0配置TS+SCSS
 ## 配置依赖
 webpack4出来有一段时间，听说改动挺大的，但是也没有去真正的接触过，现在就来体验一下webpack4有哪些不同吧！  
 
