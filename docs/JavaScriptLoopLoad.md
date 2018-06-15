@@ -28,7 +28,7 @@ console.log(author.name, author.time);
 ```
 执行 node test.js  
 
-![commonJSOutput.png](img/commonJSOutput.png)
+![commonJSOutput.png](img/JavaScriptLoopLoad/commonJSOutput.png)
 
 **es6**的加载和导出
 创建两个脚本，dong.js导出变量，es6.js加载变量并输出
@@ -46,7 +46,7 @@ console.log(author.name, author.time, author.type);
 ```
 记得先让node识别es6的import语句，然后执行 babel-node es6.js  
 
-![es6ModuleOutput.png](img/es6ModuleOutput.png)
+![es6ModuleOutput.png](img/JavaScriptLoopLoad/es6ModuleOutput.png)
 
 ## commonJS的循环加载
 commonJS的加载规则是  
@@ -65,7 +65,7 @@ console.log(`a的name是 ${a.name}`);
 ```
 分别执行 node a.js 和 node b.js
 
-![commonJSLoop1.png](img/commonJSLoop1.png)
+![commonJSLoop1.png](img/JavaScriptLoopLoad/commonJSLoop1.png)
 
 可以发现执行node命令后，马上结束了，并没有导致死循环加载  
 但是两次脚本输出的结果都不是文件最后的结果 dong和2018  
@@ -95,7 +95,7 @@ console.log(`a的name是 ${a.name}`);
 ```
 执行 node a.js
 
-![commonJSLoop2.png](img/commonJSLoop2.png)
+![commonJSLoop2.png](img/JavaScriptLoopLoad/commonJSLoop2.png)
 
 从缓存读取不存在的数据时没有报错，而是输出了undefined  
 如果从缓存读取不存在的函数方法呢？
@@ -115,7 +115,7 @@ console.log(`a的name是 ${a.name}`);
 ```
 执行 node a.js
 
-![commonJSLoop3.png](img/commonJSLoop3.png)
+![commonJSLoop3.png](img/JavaScriptLoopLoad/commonJSLoop3.png)
 
 可以发现执行报错，这就是commonJS规范加载存在的问题，需要我们避免。  
 如果变量不存在缓存，则对象没有这个属性，输出undefined，不存在的引用会报错。  
@@ -134,7 +134,7 @@ console.log(`c的name是 ${c.name}`);
 ```
 分别执行 babel-node c.js 和 babel-node d.js
 
-![es6Loop1.png](img/es6Loop1.png)
+![es6Loop1.png](img/JavaScriptLoopLoad/es6Loop1.png)
 
 可以发现执行babel-node命令后，马上结束了，并没有导致死循环加载  
 解析一下执行 babel-node c.js 的顺序 
@@ -161,7 +161,7 @@ console.log(`c的name是 ${c.name}`);
 ```
 分别执行 babel-node c.js 和 babel-node d.js
 
-![es6Loop2.png](img/es6Loop2.png)
+![es6Loop2.png](img/JavaScriptLoopLoad/es6Loop2.png)
 
 我们发现输出的对象包含了这个属性，但是为啥值为undefined呢？难道引用丢失了么？  
 我们可以传递函数看看
@@ -181,7 +181,7 @@ c.cfn();
 ```
 分别执行 babel-node c.js 和 babel-node d.js
 
-![es6Loop3.png](img/es6Loop3.png)
+![es6Loop3.png](img/JavaScriptLoopLoad/es6Loop3.png)
 
 可以发现传递函数之后，全部正确的输出，因为函数名作为函数的指针，可以最终找到这个函数的地址  
 针对import找不到数据的问题，个人认为应该是引用丢失了，但是属性仍然是存在的  

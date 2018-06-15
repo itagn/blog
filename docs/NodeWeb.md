@@ -68,7 +68,7 @@ client.on('error', function(err){
 ```
 我们可以看到通信结果
 
-![tcp](img/tcp.png)
+![tcp](img/NodeWeb/tcp.png)
 
 ## UDP
 
@@ -115,7 +115,7 @@ client.send(message, 0, message.length, 7777, '127.0.0.1', function(err, bytes){
 ```
 我们可以看到通信结果
 
-![udp](img/udp.png)
+![udp](img/NodeWeb/udp.png)
 
 ## HTTP
 
@@ -195,7 +195,7 @@ request.on('error', function(err){
 ```
 我们可以看到通信结果
 
-![http](img/http.png)
+![http](img/NodeWeb/http.png)
 
 ## HTTPS
 
@@ -229,7 +229,7 @@ $ openssl x509 -req -CA ca.crt -CAkey ca.key -CAcreateserial -in client.csr -out
 ```
 可以看到生成了很多文件
 
-![keyFiles](img/keyFiles.png)
+![keyFiles](img/NodeWeb/keyFiles.png)
 
 通过nodejs创建一个**HTTPS**的服务器
 ```javascript
@@ -259,7 +259,7 @@ $ curl -k https://127.0.0.1:7777
 hello client!
 ```
 
-![https-curl](img/https-curl.png)
+![https-curl](img/NodeWeb/https-curl.png)
 
 通过nodejs创建一个**HTTPS**的客户端
 ```javascript
@@ -288,11 +288,11 @@ request.on('error', function(err){
 ```
 我们可以看到通信结果，本地使用https似乎有些问题
 
-![https-node](img/https-node.png)
+![https-node](img/NodeWeb/https-node.png)
 
 浏览器可以通信，访问一次但是请求了两次，打开审查元素发现，浏览器除了第一次访问路径，还请求了一次favicon.ico，导致服务器接收到两次请求
 
-![https-brower](img/https-brower.png)
+![https-brower](img/NodeWeb/https-brower.png)
 
 作者：微博 [@itagn][1] - Github [@itagn][2]
 

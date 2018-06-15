@@ -23,7 +23,7 @@ console.log(info);
 我们可以看到输出了一个包含内存使用情况的对象，之前说了V8是通过堆分配内存的。  
 这里面heapTotal就是V8的申请到的堆内存大小，heapUsed就是V8当前使用的堆内存大小。  
 
-![memoryInfo.png](img/memoryInfo.png)
+![memoryInfo.png](img/V8GarbageCollection/memoryInfo.png)
 
 之前说到了V8限制了内存大小，当然也可以手动打开，在执行node命令时。
 ```javascript
