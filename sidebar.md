@@ -14,7 +14,6 @@
 1. [斐波那契数列](#docs/Fibonacci)
 1. [原生NodeJS网络编程](#docs/NodeWeb)
 1. [Vue+TS+Echarts制作可视化组件](#docs/EchartsComponent)
-1. [JavaScript模块的循环加载](#docs/JavaScriptLoopLoad)
 1. [V8的垃圾回收机制](#docs/V8GarbageCollection)
 1. [用Mocha和Jasmine进行单元测试](#docs/UnitTest)
 
