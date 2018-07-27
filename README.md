@@ -7,5 +7,5 @@
 
 欢迎 star / fork  
 
-1. 预览地址[ 戳这里](http://itagn.xyz)  
-1. Github[ 戳这里](https://github.com/itagn/blog)
+1. 预览地址 [戳这里](https://itagn.github.io/blog)  
+1. Github [戳这里](https://github.com/itagn/blog)
