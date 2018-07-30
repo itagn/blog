@@ -2,8 +2,8 @@
   <head>
     <title>itagn的小屋</title>
     <script>
-      var loc = 'http://itagn.xyz';
-      var regex = /http:\/\/itagn\.xyz\/docs\/([^#]+)#(.+)/;
+      var loc = 'https://itagn.github.io/blog';
+      var regex = /https:\/\/itagn\.github\.io\/blog\/docs\/([^#]+)#(.+)/;
       var result = regex.exec(window.location);
       if (result) {
         window.location = loc + '/#docs/' + result[1] + '#' + result[2];
