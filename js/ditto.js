@@ -204,7 +204,7 @@ function create_page_anchors() {
 function normalize_paths() {
   // images
   $(ditto.content_id + " img").map(function() {
-    var src = $(this).attr("src");
+    var src = $(this).attr("src").replace("./", "");
     if ($(this).attr("src").slice(0, 4) !== "http") {
       var pathname = location.pathname.substr(0, location.pathname.length - 1);
       var url = location.hash.replace("#", "");
@@ -212,6 +212,8 @@ function normalize_paths() {
       // split and extract base dir
       url = url.split("/");
       var base_dir = url.slice(0, url.length - 1).toString();
+      console.log('url',url)
+      console.log('base_dir',base_dir)
 
       // normalize the path (i.e. make it absolute)
       $(this).attr("src", pathname + base_dir + "/" + src);
