@@ -204,7 +204,7 @@ function create_page_anchors() {
 function normalize_paths() {
   // images
   $(ditto.content_id + " img").map(function() {
-    var src = $(this).attr("src").replace("./", "");
+    var src = $(this).attr("src");
     if ($(this).attr("src").slice(0, 4) !== "http") {
       var pathname = location.pathname.substr(0, location.pathname.length - 1);
       var url = location.hash.replace("#", "");
