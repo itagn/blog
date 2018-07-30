@@ -13,7 +13,7 @@ Java swing写ui界面，java写服务器，mysql做数据库，tcp的socket通�
 1. 用户上线离线过程，实现客户端和服务器的实时刷新
 1. 通过继承Thread实现多线程编程
 
-![exe.png](img/InstantMessageSystem/exe.png)
+![exe.png](./img/InstantMessageSystem/exe.png)
 
 ## socket套接字原理以及传输
 socket是一对套接字，客户端和服务器的一对配对socket，即socket和serverSocket。  
@@ -22,7 +22,7 @@ socket是一对套接字，客户端和服务器的一对配对socket，即socke
 **一、通过客户端向服务器发送字符串**    
 客户端发送消息，可以接受服务器返回的消息
 
-![chat.png](img/InstantMessageSystem/chat.png)
+![chat.png](./img/InstantMessageSystem/chat.png)
 
 ```javascript
 //  客户端代码
@@ -54,7 +54,7 @@ while(true){
 1. 服务器开始监听数据流，并返回信息告诉客户端准备好了
 1. 客户端开始传输数据流，客户端开始接收数据流，接收完数据流后断开socket通信，传输完毕
 
-![file.png](img/InstantMessageSystem/file.png)
+![file.png](./img/InstantMessageSystem/file.png)
 
 客户端发送文件数据流
 ```javascript
@@ -126,7 +126,7 @@ fileOut.close();
 
 ## 添加好友和删除好友  
 
-![friends.png](img/InstantMessageSystem/friends.png)
+![friends.png](./img/InstantMessageSystem/friends.png)
 
 一、添加好友
 
@@ -178,12 +178,12 @@ fileOut.close();
 
 **登录/注册**  
 
-![login.png](img/InstantMessageSystem/login.png)
-![register.png](img/InstantMessageSystem/register.png)
+![login.png](./img/InstantMessageSystem/login.png)
+![register.png](./img/InstantMessageSystem/register.png)
 
 **服务器**  
 
-![server.png](img/InstantMessageSystem/server.png)
+![server.png](./img/InstantMessageSystem/server.png)
 
 作者：微博 [@itagn][1] - Github [@itagn][2]
 
