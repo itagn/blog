@@ -212,11 +212,9 @@ function normalize_paths() {
       // split and extract base dir
       url = url.split("/");
       var base_dir = url.slice(0, url.length - 1).toString();
-      console.log('url',url)
-      console.log('base_dir',base_dir)
 
       // normalize the path (i.e. make it absolute)
-      $(this).attr("src", pathname + base_dir + "/" + src);
+      $(this).attr("src", pathname + "/" + base_dir + "/" + src);
     }
   });
 }
