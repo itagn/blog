@@ -10,7 +10,7 @@
 1. [如何发布一个npm包](#docs/NpmPublish)
 1. [纯CSS实现canvas的像素动画](#docs/OnlyCSS)
 1. [像滤镜一样改变字体颜色](#docs/FontColor)
-1. [JavaScript中任意两个数加减的解决方案](#docs/JavascirptAddSub)
+1. [JavaScript中任意两个数加减的解决方案](#docs/JavascriptAddSub)
 1. [在项目中通过解构赋值优化代码](#docs/ES6Destructuring)
 1. [说说JavaScript的隐式转换](#docs/JavaScriptTypeChange)
 1. [斐波那契数列](#docs/Fibonacci)

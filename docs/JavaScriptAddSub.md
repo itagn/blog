@@ -58,7 +58,7 @@ console.log((10 ** 21).toString())  // '1e+21'
 ```
 我们发现即使直接就转换成字符串仍然会显示为科学计数法，那么可以直接输入字符串了，跳过转成字符串的过程
 ## 解决整数加法的坑
-在这里先试着解决整数加法的问题，暂时不考虑输入的函数是否是数字的问题，假设输入一切合法    
+在这里先试着解决整数加法的问题      
 这里有几个可能性
 
     1.输入的数字都在安全整数以内相加之后，且计算的结果也在安全整数之内，则直接输出结果
@@ -128,43 +128,35 @@ function isSafeNumber(num) {
 
 // 整数加法函数入口
 function intAdd(a = '0', b = '0') {
-    const typeA = typeof(a), typeB = typeof(b)
-    const allowTypes = ['number', 'string']
-    if (!allowTypes.includes(typeA) || !allowTypes.includes(typeB)) {
-        console.error('参数中存在非法的数据，数据类型只支持 number 和 string')
-        return false
-    }
-    if (Number.isNaN(a) || Number.isNaN(b)) {
-        console.error('参数中不应该存在 NaN')
-        return false
-    }
-    const intA = Number(a), intB = Number(b)
-    if (intA === 0) return b
-    if (intB === 0) return a
-    const tagA = Number(a) < 0,  tagB = Number(b) < 0
-    const strA = `${a}`, strB = `${b}`
-    const lenA = tagA ? strA.length - 1 : strA.length
-    const lenB = tagB ? strB.length - 1 : strB.length
-    const maxLen = Math.max(lenA, lenB)
-    const padLen = Math.ceil(maxLen / intLen) * intLen  // 即为会用到的整个数组长度
-    const newA = tagA ? `-${strA.slice(1).padStart(padLen, '0')}` : strA.padStart(padLen, '0')
-    const newB = tagB ? `-${strB.slice(1).padStart(padLen, '0')}` : strB.padStart(padLen, '0')
-    let result = intCalc(newA, newB)
-    // 去掉正负数前面无意义的字符 ‘0’
-    const numberResult = Number(result)
-    if (numberResult > 0) {
-        while (result[0] === '0') {
-            result = result.slice(1)
-        }
-    } else if (numberResult < 0) {
-        while (result[1] === '0') {
-            result = '-' + result.slice(2)
-        }
+    const statusObj = checkNumber(a, b)
+    if (!statusObj.status) {
+        return statusObj.data
     } else {
-        result = '0'
+        const tagA = Number(a) < 0,  tagB = Number(b) < 0
+        const strA = `${a}`, strB = `${b}`
+        const lenA = tagA ? strA.length - 1 : strA.length
+        const lenB = tagB ? strB.length - 1 : strB.length
+        const maxLen = Math.max(lenA, lenB)
+        const padLen = Math.ceil(maxLen / intLen) * intLen  // 即为会用到的整个数组长度
+        const newA = tagA ? `-${strA.slice(1).padStart(padLen, '0')}` : strA.padStart(padLen, '0')
+        const newB = tagB ? `-${strB.slice(1).padStart(padLen, '0')}` : strB.padStart(padLen, '0')
+        let result = intCalc(newA, newB)
+        // 去掉正负数前面无意义的字符 ‘0’
+        const numberResult = Number(result)
+        if (numberResult > 0) {
+            while (result[0] === '0') {
+                result = result.slice(1)
+            }
+        } else if (numberResult < 0) {
+            while (result[1] === '0') {
+                result = '-' + result.slice(2)
+            }
+        } else {
+            result = '0'
+        }
+        console.log(result)
+        return result
     }
-    console.log(result)
-    return result
 }
 
 /**
@@ -209,6 +201,46 @@ function intCalc(a, b) {
         }
     }
     return result
+}
+
+/**
+* @param { string } a 比较的第一个整数字符串
+* @param { string } b 比较的第二个整数字符串
+* @return { object } 返回是否要退出函数的状态和退出函数返回的数据
+*/
+function checkNumber(a, b) {
+    const obj = {
+        status: true,
+        data: null
+    }
+    const typeA = typeof(a), typeB = typeof(b)
+    const allowTypes = ['number', 'string']
+    if (!allowTypes.includes(typeA) || !allowTypes.includes(typeB)) {
+        console.error('参数中存在非法的数据，数据类型只支持 number 和 string')
+        obj.status = false
+        obj.data = false
+    }
+    if (Number.isNaN(a) || Number.isNaN(b)) {
+        console.error('参数中不应该存在 NaN')
+        obj.status = false
+        obj.data = false
+    }
+    const intA = Number(a), intB = Number(b)
+    if (intA === 0) {
+        obj.status = false
+        obj.data = b
+    }
+    if (intB === 0) {
+        obj.status = false
+        obj.data = a
+    }
+    const inf = [Infinity, -Infinity]
+    if (inf.includes(intA) || inf.includes(intB)) {
+        console.error('参数中存在Infinity或-Infinity')
+        obj.status = false
+        obj.data = false
+    }
+    return obj
 }
 
 /**
@@ -295,58 +327,50 @@ intAdd(MAX, `-${10 ** 21}`)  // '0'
 ```javascript
 // 整数加法函数入口
 function intAdd(a = '0', b = '0') {
-    const typeA = typeof(a), typeB = typeof(b)
-    const allowTypes = ['number', 'string']
-    if (!allowTypes.includes(typeA) || !allowTypes.includes(typeB)) {
-        console.error('参数中存在非法的数据，数据类型只支持 number 和 string')
-        return false
-    }
-    if (Number.isNaN(a) || Number.isNaN(b)) {
-        console.error('参数中不应该存在 NaN')
-        return false
-    }
-    const intA = Number(a), intB = Number(b)
-    if (intA === 0) return b
-    if (intB === 0) return a
-    let newA, newB, maxLen
-    const tagA = Number(a) < 0,  tagB = Number(b) < 0
-    const strA = `${a}`, strB = `${b}`
-    const reg = /^\-?(\d+)(\.\d+)?e\+(\d+)$/
-    if(reg.test(a) || reg.test(b)) {
-        console.warn('由于存在科学计数法，计算结果不一定准确，请转化成字符串后计算')
-        a = strA.replace(reg, function(...rest){
-            const str = rest[2] ? rest[1] + rest[2].slice(1) : rest[1]
-            return str.padEnd(Number(rest[3]) + 1, '0')
-        })
-        b = strB.replace(reg, function(...rest){
-            const str = rest[2] ? rest[1] + rest[2].slice(1) : rest[1]
-            return str.padEnd(Number(rest[3]) + 1, '0')
-        })
-        maxLen = Math.max(a.length, b.length)
+    const statusObj = checkNumber(a, b)
+    if (!statusObj.status) {
+        return statusObj.data
     } else {
-        const lenA = tagA ? strA.length - 1 : strA.length
-        const lenB = tagB ? strB.length - 1 : strB.length
-        maxLen = Math.max(lenA, lenB)
-    }
-    const padLen = Math.ceil(maxLen / intLen) * intLen  // 即为会用到的整个数组长度
-    newA = tagA ? `-${strA.slice(1).padStart(padLen, '0')}` : strA.padStart(padLen, '0')
-    newB = tagB ? `-${strB.slice(1).padStart(padLen, '0')}` : strB.padStart(padLen, '0')
-    let result = intCalc(newA, newB)
-    // 去掉正负数前面无意义的字符 ‘0’
-    const numberResult = Number(result)
-    if (numberResult > 0) {
-        while (result[0] === '0') {
-            result = result.slice(1)
+        let newA, newB, maxLen
+        const tagA = Number(a) < 0,  tagB = Number(b) < 0
+        const strA = `${a}`, strB = `${b}`
+        const reg = /^\-?(\d+)(\.\d+)?e\+(\d+)$/
+        if(reg.test(a) || reg.test(b)) {
+            console.warn('由于存在科学计数法，计算结果不一定准确，请转化成字符串后计算')
+            a = strA.replace(reg, function(...rest){
+                const str = rest[2] ? rest[1] + rest[2].slice(1) : rest[1]
+                return str.padEnd(Number(rest[3]) + 1, '0')
+            })
+            b = strB.replace(reg, function(...rest){
+                const str = rest[2] ? rest[1] + rest[2].slice(1) : rest[1]
+                return str.padEnd(Number(rest[3]) + 1, '0')
+            })
+            maxLen = Math.max(a.length, b.length)
+        } else {
+            const lenA = tagA ? strA.length - 1 : strA.length
+            const lenB = tagB ? strB.length - 1 : strB.length
+            maxLen = Math.max(lenA, lenB)
         }
-    } else if (numberResult < 0) {
-        while (result[1] === '0') {
-            result = '-' + result.slice(2)
+        const padLen = Math.ceil(maxLen / intLen) * intLen  // 即为会用到的整个数组长度
+        newA = tagA ? `-${strA.slice(1).padStart(padLen, '0')}` : strA.padStart(padLen, '0')
+        newB = tagB ? `-${strB.slice(1).padStart(padLen, '0')}` : strB.padStart(padLen, '0')
+        let result = intCalc(newA, newB)
+        // 去掉正负数前面无意义的字符 ‘0’
+        const numberResult = Number(result)
+        if (numberResult > 0) {
+            while (result[0] === '0') {
+                result = result.slice(1)
+            }
+        } else if (numberResult < 0) {
+            while (result[1] === '0') {
+                result = '-' + result.slice(2)
+            }
+        } else {
+            result = '0'
         }
-    } else {
-        result = '0'
+        console.log(result)
+        return result
     }
-    console.log(result)
-    return result
 }
 ```
 继续测试代码    
@@ -373,11 +397,16 @@ intAdd('-4707494254750996900004254750996', '9707494254750996007299232150995')  /
 加法和减法同理，只需要把第二个参数取反后利用加法运算就可以了，由于之前已经提取了模板，可以直接定义减法函数
 ```javascript
 // 整数减法函数入口
-function IntSub(a = '0', b = '0') {
+function intSub(a = '0', b = '0') {
     const newA = `${a}`
     const newB = Number(b) > 0 ? `-${b}`: `${b}`.slice(1)
-    const result = IntAdd(newA, newB)
-    return result
+    const statusObj = checkNumber(newA, newB)
+    if (!statusObj.status) {
+        return statusObj.data
+    } else {
+        const result = IntAdd(newA, newB)
+        return result
+    }
 }
 ```
 测试结果
@@ -400,44 +429,39 @@ JavaScript中小数加减的坑是由于浮点精度的计算问题，网上能�
 ```javascript
 // 小数加法函数入口
 function floatAdd(a = '0', b = '0') {
-    const typeA = typeof(a), typeB = typeof(b)
-    const allowTypes = ['number', 'string']
-    if (!allowTypes.includes(typeA) || !allowTypes.includes(typeB)) {
-        console.error('参数中存在非法的数据，数据类型只支持 number 和 string')
-        return false
-    }
-    if (Number.isNaN(a) || Number.isNaN(b)) {
-        console.error('参数中不应该存在 NaN')
-        return false
-    }
-    const strA = `${a}`.split('.'), strB = `${b}`.split('.')
-    let newA = strA[1], newB = strB[1]
-    const maxLen = Math.max(newA.length, newB.length)
-    const floatLen = Math.ceil(maxLen / intLen) * intLen
-    newA = newA.padEnd(floatLen, '0')
-    newB = newB.padEnd(floatLen, '0')
-    newA = strA[0][0] === '-' ? `-${newA}` : newA
-    newB = strB[0][0] === '-' ? `-${newB}` : newB
-    let result = intCalc(newA, newB)
-    let tag = true, numResult = Number(result)
-    // 去掉正负数后面无意义的字符 ‘0’
-    if (numResult !== 0) {
-        if (numResult < 0) {
-            result = result.slice(1)
-            tag = false
-        }
-        result = result.length === floatLen ? `0.${result}` : `1.${result.slice(1)}`
-        result = tag ? result : `-${result}`
-        let index = result.length - 1
-        while (result[index] === '0') {
-            result = result.slice(0, -1)
-            index--
-        }
+    const statusObj = checkNumber(a, b)
+    if (!statusObj.status) {
+        return statusObj.data
     } else {
-        result = '0'
+        const strA = `${a}`.split('.'), strB = `${b}`.split('.')
+        let newA = strA[1], newB = strB[1]
+        const maxLen = Math.max(newA.length, newB.length)
+        const floatLen = Math.ceil(maxLen / intLen) * intLen
+        newA = newA.padEnd(floatLen, '0')
+        newB = newB.padEnd(floatLen, '0')
+        newA = strA[0][0] === '-' ? `-${newA}` : newA
+        newB = strB[0][0] === '-' ? `-${newB}` : newB
+        let result = intCalc(newA, newB)
+        let tag = true, numResult = Number(result)
+        // 去掉正负数后面无意义的字符 ‘0’
+        if (numResult !== 0) {
+            if (numResult < 0) {
+                result = result.slice(1)
+                tag = false
+            }
+            result = result.length === floatLen ? `0.${result}` : `1.${result.slice(1)}`
+            result = tag ? result : `-${result}`
+            let index = result.length - 1
+            while (result[index] === '0') {
+                result = result.slice(0, -1)
+                index--
+            }
+        } else {
+            result = '0'
+        }
+        console.log(result)
+        return result
     }
-    console.log(result)
-    return result
 }
 ```
 测试结果    
@@ -458,8 +482,13 @@ floatAdd('-0.4707494254750996900004254750996', '0.970749425475099600729923215099
 function floatSub(a = '0', b = '0') {
     const newA = `${a}`
     const newB = Number(b) > 0 ? `-${b}`: `${b.slice(1)}`
-    let result = floatAdd(newA, newB)
-    return result
+    const statusObj = checkNumber(newA, newB)
+    if (!statusObj.status) {
+        return statusObj.data
+    } else {
+        const result = floatAdd(newA, newB)
+        return result
+    }
 }
 ```
 测试结果    
@@ -485,77 +514,72 @@ floatSub('-0.4707494254750996900004254750996', '0.970749425475099600729923215099
 ```javascript
 // 任意数加法函数入口
 function allAdd(a = '0', b = '0') {
-  const typeA = typeof(a), typeB = typeof(b)
-  const allowTypes = ['number', 'string']
-  if (!allowTypes.includes(typeA) || !allowTypes.includes(typeB)) {
-      console.error('参数中存在非法的数据，数据类型只支持 number 和 string')
-      return false
-  }
-  if (Number.isNaN(a) || Number.isNaN(b)) {
-      console.error('参数中不应该存在 NaN')
-      return false
-  }
-  const intA = Number(a), intB = Number(b)
-  if (intA === 0) return b
-  if (intB === 0) return a
-  const strA = `${a}`.split('.'), strB = `${b}`.split('.')
-  let intAs = strA[0], floatA = strA.length === 1 ? '0' : strA[1]
-  let intBs = strB[0], floatB = strB.length === 1 ? '0' : strB[1]
-  const tagA = intAs > 0, tagB = intBs > 0
-  const maxIntLen = Math.max(intAs.length, intBs.length)
-  const arrIntLen = Math.ceil(maxIntLen / intLen) * intLen
-  const maxFloatLen = Math.max(floatA.length, floatB.length)
-  const arrFloatLen = Math.ceil(maxFloatLen / intLen) * intLen
-  intAs = tagA ? intAs.padStart(arrIntLen, '0') : intAs.slice(1).padStart(arrIntLen, '0')
-  intBs = tagB ? intBs.padStart(arrIntLen, '0') : intBs.slice(1).padStart(arrIntLen, '0')
-  let newA = floatA === '0' ? intAs + '0'.padEnd(arrFloatLen, '0') : intAs + floatA.padEnd(arrFloatLen, '0')
-  let newB = floatB === '0' ? intBs + '0'.padEnd(arrFloatLen, '0') : intBs + floatB.padEnd(arrFloatLen, '0')
-  newA = tagA ? newA : `-${newA}`
-  newB = tagB ? newB : `-${newB}`
-  let result = intCalc(newA, newB)
-  const numResult = Number(result)
-  if (result.length > arrIntLen) {
-      result = result.slice(0, -arrFloatLen) + '.' + result.slice(-arrFloatLen)
-  }
-  // 去掉正负数前面后面无意义的字符 ‘0’
-  if (numResult !== 0) {
-      if (numResult > 0) {
-          while (result[0] === '0') {
-              result = result.slice(1)
-          }
-      } else if (numResult < 0) {
-          while (result[1] === '0') {
-              result = '-' + result.slice(2)
-          }
-          result = result.slice(1)
-          tag = false
-      }
-      let index = result.length - 1
-      while (result[index] === '0') {
-          result = result.slice(0, -1)
-          index--
-      }
-  } else {
-      result = '0'
-  }
-  // 往末尾去掉字符‘0’，可能存在删完留下小数点
-  if (result[result.length - 1] === '.') {
-    result = result.slice(0, -1)
-  }
-  // 往头部去掉字符‘0’，可能存在删完整数
-  if (result[0] === '.') {
-    result = '0' + result
-  }
-  console.log(result)
-  return result
+    const statusObj = checkNumber(a, b)
+    if (!statusObj.status) {
+        return statusObj.data
+    } else {
+        const strA = `${a}`.split('.'), strB = `${b}`.split('.')
+        let intAs = strA[0], floatA = strA.length === 1 ? '0' : strA[1]
+        let intBs = strB[0], floatB = strB.length === 1 ? '0' : strB[1]
+        const tagA = intAs > 0, tagB = intBs > 0
+        const maxIntLen = Math.max(intAs.length, intBs.length)
+        const arrIntLen = Math.ceil(maxIntLen / intLen) * intLen
+        const maxFloatLen = Math.max(floatA.length, floatB.length)
+        const arrFloatLen = Math.ceil(maxFloatLen / intLen) * intLen
+        intAs = tagA ? intAs.padStart(arrIntLen, '0') : intAs.slice(1).padStart(arrIntLen, '0')
+        intBs = tagB ? intBs.padStart(arrIntLen, '0') : intBs.slice(1).padStart(arrIntLen, '0')
+        let newA = floatA === '0' ? intAs + '0'.padEnd(arrFloatLen, '0') : intAs + floatA.padEnd(arrFloatLen, '0')
+        let newB = floatB === '0' ? intBs + '0'.padEnd(arrFloatLen, '0') : intBs + floatB.padEnd(arrFloatLen, '0')
+        newA = tagA ? newA : `-${newA}`
+        newB = tagB ? newB : `-${newB}`
+        let result = intCalc(newA, newB)
+        const numResult = Number(result)
+        if (result.length > arrIntLen) {
+            result = result.slice(0, -arrFloatLen) + '.' + result.slice(-arrFloatLen)
+        }
+        // 去掉正负数前面后面无意义的字符 ‘0’
+        if (numResult !== 0) {
+            if (numResult > 0) {
+                while (result[0] === '0') {
+                    result = result.slice(1)
+                }
+            } else if (numResult < 0) {
+                while (result[1] === '0') {
+                    result = '-' + result.slice(2)
+                }
+                result = result.slice(1)
+                tag = false
+            }
+            let index = result.length - 1
+            while (result[index] === '0') {
+                result = result.slice(0, -1)
+                index--
+            }
+        } else {
+            result = '0'
+        }
+        if (result[result.length - 1] === '.') {
+            result = result.slice(0, -1)
+        }
+        if (result[0] === '.') {
+            result = '0' + result
+        }
+        console.log(result)
+        return result
+    }
 }
 
 // 任意数减法函数入口
 function allSub(a = '0', b = '0') {
-  const newA = `${a}`
-  const newB = Number(b) > 0 ? `-${b}`: `${b}`.slice(1)
-  const result = allAdd(newA, newB)
-  return result
+    const newA = `${a}`
+    const newB = Number(b) > 0 ? `-${b}`: `${b}`.slice(1)
+    const statusObj = checkNumber(newA, newB)
+    if (!statusObj.status) {
+        return statusObj.data
+    } else {     
+        const result = allAdd(newA, newB)
+        return result
+    }
 }
 ```
 测试结果    
