@@ -131,6 +131,8 @@ css变化，.up的div只做滑块
 
 ## 可维护的优化
 
+CodePen地址：[优化后的代码](https://codepen.io/itagn/pen/dqgEdv)    
+
 列举需要优化的点：
 
 > * 伪元素content的值与.down的div文字的DRY问题
