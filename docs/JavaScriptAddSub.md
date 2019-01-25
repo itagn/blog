@@ -26,11 +26,11 @@ console.log(0.3 - 0.2 === 0.1)  // false
 ```javascript
 const max = Number.MAX_SAFE_INTEGER
 console.log(max)  // 9007199254740991
-console.log(max + 2)  // 9007199254740994
+console.log(max + 2)  // 9007199254740992
 
 const min = Number.MIN_SAFE_INTEGER
 console.log(min)  // -9007199254740991
-console.log(min - 2)  // -9007199254740994
+console.log(min - 2)  // -9007199254740992
 ```
 `Number.MAX_SAFE_INTEGER` 是何物？    
 根据 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER) 里面的定义
